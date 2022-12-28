@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:notifications/services/firebase_messaging_service.dart';
 import 'package:notifications/services/notification_service.dart';
 import 'package:provider/provider.dart';
 
@@ -19,7 +20,10 @@ class _AppState extends State<App> {
     checkNotifications();
   }
 
-  initilizeFirebaseMessaging() async {}
+  initilizeFirebaseMessaging() async {
+    await Provider.of<FirebaseMessagingService>(context, listen: false)
+        .initialize();
+  }
 
   checkNotifications() async {
     await Provider.of<NotificationService>(context, listen: false)
